@@ -3,8 +3,7 @@
 **Flappy Charmander** is a web game I created inspired by the classic Flappy Bird, featuring Charmander from Pokémon as the main character! Fly through pipes, avoid obstacles, and aim for the highest score!
 
 # Demo
-Play the game directly in your browser: 
-[Demo: Flappy Charmander] (https://mathiashandeland.github.io/Flappy-Charmander/)
+Play the game directly in your browser: (https://mathiashandeland.github.io/Flappy-Charmander/)
 
 
 ## Preview
