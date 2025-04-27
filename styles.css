@@ -1,0 +1,49 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#gameContainer {
+  position: relative;
+}
+
+#gameCanvas {
+  background-image: url(./assets/flappybirdbg.png);
+}
+
+#startGameMessage, #gameoverMessage, #restartMessage, #playGameMessage {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); 
+  text-align: center;
+  font-family: 'Luckiest Guy', sans-serif;
+  color: white;
+  text-shadow: /* shadow adding a colorful, 3D effect*/
+    -2px -2px 0 rgba(0, 0, 0, 0.7), 
+     2px -2px 0 rgba(255, 0, 0, 0.7),  
+    -2px  2px 0 rgba(0, 0, 255, 0.7),  
+     2px  2px 0 rgba(0, 255, 0, 0.7),  
+     0px -2px 0 rgba(255, 255, 0, 0.7), 
+     0px  2px 0 rgba(255, 165, 0, 0.7), 
+    -2px  0px 0 rgba(75, 0, 130, 0.7), 
+     2px  0px 0 rgba(255, 20, 147, 0.7);
+  display: none;
+}
+
+#startGameMessage {
+  top: 30%;
+  font-size: 55px;
+}
+
+#gameoverMessage {
+  top: 45%;
+  font-size: 65px;
+  white-space: nowrap;
+}
+
+#restartMessage, #playGameMessage {
+  top: 60%;
+  font-size: 20px;
+}
