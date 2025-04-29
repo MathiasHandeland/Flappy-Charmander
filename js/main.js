@@ -37,7 +37,7 @@ window.onload = function() {
     // start game loop
     requestAnimationFrame(update);
     document.addEventListener("keydown", moveCharmander); // listen for key presses
-    document.addEventListener("touchstart", moveCharmander); // listen for touch events
+    document.addEventListener("touchend", moveCharmander); // listen for touch events
 }
 
 // the game loop
