@@ -1,16 +1,3 @@
-html, body { 
-  touch-action: manipulation;
-  -ms-touch-action: manipulation;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-* {
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-}
-
 body {
   display: flex;
   justify-content: center;
@@ -24,6 +11,8 @@ body {
 
 #gameCanvas {
   background-image: url(./assets/flappybirdbg.png);
+  touch-action: none; /* blocks all gesture-based behavior (including panning and zooming) */
+  user-select: none; /* stops accidental text highlighting on taps, clicks, or drags. */
 }
 
 #startGameMessage, #gameoverMessage, #restartMessage, #playGameMessage {
