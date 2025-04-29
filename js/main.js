@@ -84,21 +84,25 @@ function update() {
 }
 
 function moveCharmander(e) {
-    e.preventDefault(); // prevent the default action (for mobile browsers)
+    e.preventDefault();
 
-    // Check if the game has started or is over
-    if (!gameStarted && (e.code === "Space" || e.code === "ArrowUp" || e.type === "touchstart")) {
+    const isJumpInput = e.type === "keydown" && (e.code === "Space" || e.code === "ArrowUp");
+    const isTouch = e.type === "touchend";
+
+    // Check if the game has started or if the game is over
+    if (!gameStarted && (isJumpInput || isTouch)) {
         gameStarted = true;
         document.getElementById("startGameMessage").style.display = "none";
         document.getElementById("playGameMessage").style.display = "none";
-    } else if (gameOver && (e.code === "Space" || e.code === "ArrowUp" || e.type === "touchstart")) {
+    // if the game is over, reset the game
+    } else if (gameOver && (isJumpInput || isTouch)) {
         resetGame();
-    } else if (e.code === "Space" || e.code === "ArrowUp" || e.type === "touchstart") {
+    // if the game is not over, move charmander
+    } else if (isJumpInput || isTouch) {
         flapCharmander();
         toggleCharmanderFrame();
     }
 }
-
 
 function resetGame() {
     resetCharmanderPos();
