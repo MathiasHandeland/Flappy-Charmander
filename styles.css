@@ -6,6 +6,11 @@ html, body {
   user-select: none;
 }
 
+* {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
 body {
   display: flex;
   justify-content: center;
