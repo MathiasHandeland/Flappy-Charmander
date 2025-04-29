@@ -37,6 +37,7 @@ window.onload = function() {
     // start game loop
     requestAnimationFrame(update);
     document.addEventListener("keydown", moveCharmander); // listen for key presses
+    document.addEventListener("touchstart", moveCharmander); // listen for touch events
 }
 
 // the game loop
@@ -83,19 +84,21 @@ function update() {
 }
 
 function moveCharmander(e) {
-    if (e.code === "Space" || e.code === "ArrowUp") {
-        if (!gameStarted) {
-            gameStarted = true;
-            document.getElementById("startGameMessage").style.display = "none";
-            document.getElementById("playGameMessage").style.display = "none";
-        } else if (gameOver) {
-            resetGame();
-        } else {
-            flapCharmander();
-            toggleCharmanderFrame();
-        }
+    e.preventDefault(); // prevent the default action (for mobile browsers)
+
+    // Check if the game has started or is over
+    if (!gameStarted && (e.code === "Space" || e.code === "ArrowUp" || e.type === "touchstart")) {
+        gameStarted = true;
+        document.getElementById("startGameMessage").style.display = "none";
+        document.getElementById("playGameMessage").style.display = "none";
+    } else if (gameOver && (e.code === "Space" || e.code === "ArrowUp" || e.type === "touchstart")) {
+        resetGame();
+    } else if (e.code === "Space" || e.code === "ArrowUp" || e.type === "touchstart") {
+        flapCharmander();
+        toggleCharmanderFrame();
     }
 }
+
 
 function resetGame() {
     resetCharmanderPos();
