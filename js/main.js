@@ -37,7 +37,7 @@ window.onload = function() {
     // start game loop
     requestAnimationFrame(update);
     document.addEventListener("keydown", moveCharmander); // listen for key presses
-    document.addEventListener("touchend", moveCharmander); // listen for touch events
+    document.addEventListener("touchstart", moveCharmander); // listen for touch events
 }
 
 // the game loop
@@ -84,21 +84,16 @@ function update() {
 }
 
 function moveCharmander(e) {
-    e.preventDefault();
+    e.preventDefault(); // prevent the default action (for mobile browsers)
 
-    const isJumpInput = e.type === "keydown" && (e.code === "Space" || e.code === "ArrowUp");
-    const isTouch = e.type === "touchend";
-
-    // Check if the game has started or if the game is over
-    if (!gameStarted && (isJumpInput || isTouch)) {
+    // Check if the game has started or is over
+    if (!gameStarted && (e.code === "Space" || e.code === "ArrowUp" || e.type === "touchstart")) {
         gameStarted = true;
         document.getElementById("startGameMessage").style.display = "none";
         document.getElementById("playGameMessage").style.display = "none";
-    // if the game is over, reset the game
-    } else if (gameOver && (isJumpInput || isTouch)) {
+    } else if (gameOver && (e.code === "Space" || e.code === "ArrowUp" || e.type === "touchstart")) {
         resetGame();
-    // if the game is not over, move charmander
-    } else if (isJumpInput || isTouch) {
+    } else if (e.code === "Space" || e.code === "ArrowUp" || e.type === "touchstart") {
         flapCharmander();
         toggleCharmanderFrame();
     }
